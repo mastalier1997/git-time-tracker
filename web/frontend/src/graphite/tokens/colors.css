@@ -1,0 +1,58 @@
+/* Graphite colour tokens — shadcn variable names. Light is :root (shadcn base); dark via .dark or [data-theme="dark"]. Source: tokens.json */
+:root{
+--background:#FFFFFF;--foreground:#12171B;
+--card:#EEF1F2;--card-foreground:#12171B;
+--popover:#FFFFFF;--popover-foreground:#12171B;
+--primary:#6656C8;--primary-foreground:#FFFFFF;
+--secondary:#E3E7E9;--secondary-foreground:#12171B;
+--muted:#EEF1F2;--muted-foreground:#5B6570;
+--accent:#E3E7E9;--accent-foreground:#12171B;
+--destructive:#C93030;--destructive-fill:#C93030;
+--success:#13703F;--warning:#8A5A00;--info:#1F66B0;
+--destructive-muted:color-mix(in srgb,var(--destructive) 10%,var(--background));--success-muted:color-mix(in srgb,var(--success) 10%,var(--background));--warning-muted:color-mix(in srgb,#C78A00 14%,var(--background));--info-muted:color-mix(in srgb,var(--info) 10%,var(--background));
+--border:#D8DDE0;--input:#8B949E;--ring:#6656C8;
+--chart-1:#6656C8;--chart-2:#2F7FC9;--chart-3:#13703F;--chart-4:#B5772A;--chart-5:#C25A7F;
+--sidebar:#EEF1F2;--sidebar-foreground:#12171B;--sidebar-primary:#6656C8;--sidebar-primary-foreground:#FFFFFF;--sidebar-accent:#E3E7E9;--sidebar-accent-foreground:#12171B;--sidebar-border:#D8DDE0;--sidebar-ring:#6656C8;
+/* Optional accent presets (base hues; clamp per mode for contrast). Default accent is violet. */
+--preset-violet:#9084DA;--preset-indigo:#5596DC;--preset-sky:#00A3C7;--preset-cyan:#00AAA3;--preset-teal:#41A974;--preset-sage:#7CA047;--preset-yellow:#EACC56;--preset-olive:#C2832D;--preset-orange:#D27558;--preset-red:#E67A73;--preset-pink:#DA7BB3;
+/* Semantic aliases */
+--surface-page:var(--background);--surface-card:var(--card);--surface-raised:var(--secondary);--surface-hover:var(--accent);--surface-floating:var(--popover);
+--text-body:var(--foreground);--text-muted:var(--muted-foreground);--text-on-primary:var(--primary-foreground);--text-error:var(--destructive);--text-success:var(--success);--text-warning:var(--warning);--text-info:var(--info);
+--border-subtle:var(--border);--border-control:var(--input);
+color-scheme:light;
+}
+.dark,[data-theme="dark"]{
+--background:#0C0F12;--foreground:#E7ECEE;
+--card:#141A1F;--card-foreground:#E7ECEE;
+--popover:#1C242B;--popover-foreground:#E7ECEE;
+--primary:#9084DA;--primary-foreground:#0C0F12;
+--secondary:#1C242B;--secondary-foreground:#E7ECEE;
+--muted:#141A1F;--muted-foreground:#8B96A1;
+--accent:#1C242B;--accent-foreground:#E7ECEE;
+--destructive:#F25555;--destructive-fill:rgb(242 85 85 / 0.6);
+--success:#34C77B;--warning:#EACC56;--info:#5596DC;
+--destructive-muted:color-mix(in srgb,var(--destructive) 14%,var(--background));--success-muted:color-mix(in srgb,var(--success) 14%,var(--background));--warning-muted:color-mix(in srgb,var(--warning) 14%,var(--background));--info-muted:color-mix(in srgb,var(--info) 14%,var(--background));
+--border:#232B32;--input:#5D6872;--ring:#9084DA;
+--chart-1:#9084DA;--chart-2:#5596DC;--chart-3:#34C77B;--chart-4:#EACC56;--chart-5:#DA7BB3;
+--sidebar:#141A1F;--sidebar-foreground:#E7ECEE;--sidebar-primary:#9084DA;--sidebar-primary-foreground:#0C0F12;--sidebar-accent:#1C242B;--sidebar-accent-foreground:#E7ECEE;--sidebar-border:#232B32;--sidebar-ring:#9084DA;
+color-scheme:dark;
+}
+
+/* Accent switching — set data-accent on <html> or any container. Light values are AA with white text; dark values with near-black text. */
+[data-accent="violet"]{--primary:#6656C8;--primary-foreground:#FFFFFF;--ring:#6656C8;--chart-1:#6656C8;--sidebar-primary:#6656C8;--sidebar-primary-foreground:#FFFFFF;--sidebar-ring:#6656C8}
+.dark[data-accent="violet"],.dark [data-accent="violet"],[data-accent="violet"] .dark,[data-theme="dark"][data-accent="violet"],[data-theme="dark"] [data-accent="violet"],[data-accent="violet"] [data-theme="dark"]{--primary:#9084DA;--primary-foreground:#0C0F12;--ring:#9084DA;--chart-1:#9084DA;--sidebar-primary:#9084DA;--sidebar-primary-foreground:#0C0F12;--sidebar-ring:#9084DA}
+[data-accent="indigo"]{--primary:#2F64B5;--primary-foreground:#FFFFFF;--ring:#2F64B5;--chart-1:#2F64B5;--sidebar-primary:#2F64B5;--sidebar-primary-foreground:#FFFFFF;--sidebar-ring:#2F64B5}
+.dark[data-accent="indigo"],.dark [data-accent="indigo"],[data-accent="indigo"] .dark,[data-theme="dark"][data-accent="indigo"],[data-theme="dark"] [data-accent="indigo"],[data-accent="indigo"] [data-theme="dark"]{--primary:#5596DC;--primary-foreground:#0C0F12;--ring:#5596DC;--chart-1:#5596DC;--sidebar-primary:#5596DC;--sidebar-primary-foreground:#0C0F12;--sidebar-ring:#5596DC}
+[data-accent="sky"]{--primary:#0A6A85;--primary-foreground:#FFFFFF;--ring:#0A6A85;--chart-1:#0A6A85;--sidebar-primary:#0A6A85;--sidebar-primary-foreground:#FFFFFF;--sidebar-ring:#0A6A85}
+.dark[data-accent="sky"],.dark [data-accent="sky"],[data-accent="sky"] .dark,[data-theme="dark"][data-accent="sky"],[data-theme="dark"] [data-accent="sky"],[data-accent="sky"] [data-theme="dark"]{--primary:#00A3C7;--primary-foreground:#0C0F12;--ring:#00A3C7;--chart-1:#00A3C7;--sidebar-primary:#00A3C7;--sidebar-primary-foreground:#0C0F12;--sidebar-ring:#00A3C7}
+[data-accent="teal"]{--primary:#1C7349;--primary-foreground:#FFFFFF;--ring:#1C7349;--chart-1:#1C7349;--sidebar-primary:#1C7349;--sidebar-primary-foreground:#FFFFFF;--sidebar-ring:#1C7349}
+.dark[data-accent="teal"],.dark [data-accent="teal"],[data-accent="teal"] .dark,[data-theme="dark"][data-accent="teal"],[data-theme="dark"] [data-accent="teal"],[data-accent="teal"] [data-theme="dark"]{--primary:#41A974;--primary-foreground:#0C0F12;--ring:#41A974;--chart-1:#41A974;--sidebar-primary:#41A974;--sidebar-primary-foreground:#0C0F12;--sidebar-ring:#41A974}
+[data-accent="orange"]{--primary:#A84A28;--primary-foreground:#FFFFFF;--ring:#A84A28;--chart-1:#A84A28;--sidebar-primary:#A84A28;--sidebar-primary-foreground:#FFFFFF;--sidebar-ring:#A84A28}
+.dark[data-accent="orange"],.dark [data-accent="orange"],[data-accent="orange"] .dark,[data-theme="dark"][data-accent="orange"],[data-theme="dark"] [data-accent="orange"],[data-accent="orange"] [data-theme="dark"]{--primary:#D27558;--primary-foreground:#0C0F12;--ring:#D27558;--chart-1:#D27558;--sidebar-primary:#D27558;--sidebar-primary-foreground:#0C0F12;--sidebar-ring:#D27558}
+[data-accent="pink"]{--primary:#A8386F;--primary-foreground:#FFFFFF;--ring:#A8386F;--chart-1:#A8386F;--sidebar-primary:#A8386F;--sidebar-primary-foreground:#FFFFFF;--sidebar-ring:#A8386F}
+.dark[data-accent="pink"],.dark [data-accent="pink"],[data-accent="pink"] .dark,[data-theme="dark"][data-accent="pink"],[data-theme="dark"] [data-accent="pink"],[data-accent="pink"] [data-theme="dark"]{--primary:#DA7BB3;--primary-foreground:#0C0F12;--ring:#DA7BB3;--chart-1:#DA7BB3;--sidebar-primary:#DA7BB3;--sidebar-primary-foreground:#0C0F12;--sidebar-ring:#DA7BB3}
+
+/* High contrast — data-contrast="high" or the OS preference. Stronger borders, control edges and secondary text. */
+[data-contrast="high"]{--border:#7A848D;--input:#3A434B;--muted-foreground:#3A434B;--secondary:#D8DDE0;--accent:#D8DDE0;--sidebar-border:#7A848D;--focus-ring:0 0 0 3px var(--ring)}
+.dark[data-contrast="high"],.dark [data-contrast="high"],[data-contrast="high"] .dark,[data-theme="dark"][data-contrast="high"],[data-contrast="high"] [data-theme="dark"]{--border:#6B7680;--input:#B7C0C8;--muted-foreground:#C3CBD2;--secondary:#232B32;--accent:#2A333B;--sidebar-border:#6B7680;--focus-ring:0 0 0 3px var(--ring)}
+@media (prefers-contrast:more){:root{--border:#7A848D;--input:#3A434B;--muted-foreground:#3A434B;--secondary:#D8DDE0;--accent:#D8DDE0;--sidebar-border:#7A848D;--focus-ring:0 0 0 3px var(--ring)}.dark,[data-theme="dark"]{--border:#6B7680;--input:#B7C0C8;--muted-foreground:#C3CBD2;--secondary:#232B32;--accent:#2A333B;--sidebar-border:#6B7680;--focus-ring:0 0 0 3px var(--ring)}}

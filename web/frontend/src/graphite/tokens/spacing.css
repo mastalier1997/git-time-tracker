@@ -1,0 +1,34 @@
+/* Tailwind 4px scale, radius (base --radius 10px), sizes, density, elevation, z-index, motion, layout */
+:root{
+--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-8:32px;--space-10:40px;--space-12:48px;--space-16:64px;--space-24:96px;
+--radius:10px;--radius-sm:6px;--radius-md:8px;--radius-lg:10px;--radius-xl:14px;--radius-full:9999px;
+--control-touch:44px;--content-max:448px;
+/* Density — components read these. Comfortable (default) is touch-safe. */
+--control-h:44px;--control-h-sm:36px;--row-h:40px;--table-row-h:52px;--table-head-h:44px;--disclosure-h:52px;
+/* Shadows only on floating layers (menus, dialogs, sticky bottom bar). Never on cards. */
+--shadow-sm:0 1px 2px 0 rgb(0 0 0 / 0.05);
+--shadow-popover:0 4px 6px -1px rgb(0 0 0 / 0.1),0 2px 4px -2px rgb(0 0 0 / 0.1);
+--shadow-dialog:0 10px 15px -3px rgb(0 0 0 / 0.1),0 4px 6px -4px rgb(0 0 0 / 0.1);
+--focus-ring:0 0 0 3px color-mix(in srgb,var(--ring) 50%,transparent);
+/* Z-index — use these, never raw numbers */
+--z-base:0;/* @kind other */--z-raised:1;/* @kind other */--z-sticky:10;/* @kind other */--z-dropdown:50;/* @kind other */--z-overlay:90;/* @kind other */--z-modal:100;/* @kind other */--z-toast:110;/* @kind other */--z-tooltip:120;/* @kind other */--z-skip:200;/* @kind other */
+/* Motion */
+--duration-instant:0ms;/* @kind other */--duration-fast:100ms;/* @kind other */--duration:150ms;/* @kind other */--duration-slow:250ms;/* @kind other */
+--ease:ease-out;/* @kind other */--ease-out:cubic-bezier(0.2,0,0,1);/* @kind other */--ease-in:cubic-bezier(0.4,0,1,1);/* @kind other */--ease-in-out:cubic-bezier(0.4,0,0.2,1);/* @kind other */
+--enter:gr-enter 150ms cubic-bezier(0.2,0,0,1);/* @kind other */--exit:gr-exit 100ms cubic-bezier(0.4,0,1,1);/* @kind other */
+--transition-colors:color 150ms ease-out,background-color 150ms ease-out,border-color 150ms ease-out,box-shadow 150ms ease-out;
+--transition-transform:transform 150ms cubic-bezier(0.2,0,0,1),opacity 150ms cubic-bezier(0.2,0,0,1);/* @kind other */
+/* Layout — breakpoints are reference values (CSS vars can't drive @media). sm 640 · md 768 · lg 1024 · xl 1280 */
+--bp-sm:640px;/* @kind other */--bp-md:768px;/* @kind other */--bp-lg:1024px;/* @kind other */--bp-xl:1280px;/* @kind other */
+--container-sm:448px;--container-md:720px;--container-lg:1024px;--container-xl:1280px;
+--grid-columns:4;/* @kind other */--grid-gutter:16px;--grid-margin:16px;--sidebar-w:256px;--sidebar-w-collapsed:64px;--topbar-h:56px;
+}
+@media (min-width:768px){:root{--grid-columns:8;/* @kind other */--grid-gutter:24px;--grid-margin:24px}}
+@media (min-width:1024px){:root{--grid-columns:12;/* @kind other */--grid-margin:32px}}
+[data-density="compact"]{--control-h:36px;--control-h-sm:32px;--row-h:32px;--table-row-h:40px;--table-head-h:36px;--disclosure-h:44px;--grid-gutter:16px}
+@media (pointer:coarse){[data-density="compact"]{--control-h:44px;--row-h:40px}}
+@keyframes gr-enter{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@keyframes gr-exit{from{opacity:1}to{opacity:0}}
+@keyframes gr-fade{from{opacity:0}to{opacity:1}}
+@keyframes gr-spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}}

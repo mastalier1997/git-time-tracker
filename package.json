@@ -1,0 +1,13 @@
+{
+  "name": "time-tracker",
+  "version": "1.0.0",
+  "description": "Lightweight time tracker: manual timers + automatic git-based logging",
+  "type": "commonjs",
+  "bin": {
+    "track": "track.js"
+  },
+  "scripts": {
+    "start": "node track.js"
+  },
+  "license": "MIT"
+}
