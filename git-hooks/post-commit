@@ -1,0 +1,6 @@
+#!/bin/sh
+# Installed globally by time-tracker
+node "C:/Users/mastalie/development/claude/time-tracker/track.js" gitcommit
+# Chain to a repo-local post-commit hook if one exists.
+LOCAL="$(git rev-parse --git-dir)/hooks/post-commit"
+if [ -x "$LOCAL" ]; then "$LOCAL" "$@"; fi

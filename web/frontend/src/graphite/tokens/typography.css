@@ -1,0 +1,44 @@
+/* Graphite type — Geist (UI) + Geist Mono (code, keys, figures in tables when needed). System stack is the fallback. 12px floor (badges/kbd), 13px for running text. */
+:root{
+--font-sans:"Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+--font-mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+--text-display-lg-size:48px;--text-display-lg-line:52px;--text-display-lg-weight:700;--text-display-lg-tracking:-0.025em;
+--text-display-size:32px;--text-display-line:38px;--text-display-weight:700;--text-display-tracking:-0.02em;
+--text-h1-size:28px;--text-h1-line:34px;--text-h1-weight:600;
+--text-h2-size:22px;--text-h2-line:28px;--text-h2-weight:600;
+--text-h3-size:18px;--text-h3-line:26px;--text-h3-weight:600;
+--text-body-lg-size:18px;--text-body-lg-line:28px;--text-body-lg-weight:400;
+--text-body-size:16px;--text-body-line:24px;--text-body-weight:400;
+--text-body-medium-weight:500;
+--text-ui-size:14px;--text-ui-line:20px;--text-ui-weight:500;
+--text-small-size:14px;--text-small-line:20px;--text-small-weight:400;
+--text-label-size:13px;--text-label-line:18px;--text-label-weight:600;--text-label-tracking:0.02em;
+--text-caption-size:13px;--text-caption-line:18px;--text-caption-weight:400;
+--text-code-size:13px;--text-code-line:20px;--text-code-weight:400;
+--font-display-lg:700 48px/52px var(--font-sans);
+--font-display:700 32px/38px var(--font-sans);
+--font-h1:600 28px/34px var(--font-sans);
+--font-h2:600 22px/28px var(--font-sans);
+--font-h3:600 18px/26px var(--font-sans);
+--font-body-lg:400 18px/28px var(--font-sans);
+--font-body:400 16px/24px var(--font-sans);
+--font-body-medium:500 16px/24px var(--font-sans);
+--font-ui:500 14px/20px var(--font-sans);
+--font-small:400 14px/20px var(--font-sans);
+--font-label:600 13px/18px var(--font-sans);
+--font-caption:400 13px/18px var(--font-sans);
+--font-code:400 13px/20px var(--font-mono);
+}
+.text-display-lg{font:var(--font-display-lg);letter-spacing:-0.025em}
+.text-display{font:var(--font-display);letter-spacing:-0.02em}
+.text-h1{font:var(--font-h1);letter-spacing:-0.01em}
+.text-h2{font:var(--font-h2)}
+.text-h3{font:var(--font-h3)}
+.text-body-lg{font:var(--font-body-lg)}
+.text-body{font:var(--font-body)}
+.text-body-medium{font:var(--font-body-medium)}
+.text-ui{font:var(--font-ui)}
+.text-small{font:var(--font-small)}
+.text-label{font:var(--font-label);letter-spacing:var(--text-label-tracking);text-transform:uppercase}
+.text-caption{font:var(--font-caption)}
+.text-code{font:var(--font-code)}

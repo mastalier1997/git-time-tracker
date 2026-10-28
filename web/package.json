@@ -1,0 +1,14 @@
+{
+  "name": "time-tracker-web",
+  "version": "1.0.0",
+  "description": "Backend API + static frontend host for time-tracker",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.3.0",
+    "express": "^4.21.0"
+  }
+}

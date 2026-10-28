@@ -1,0 +1,19 @@
+services:
+  time-tracker:
+    build: ./web
+    container_name: time-tracker
+    # Auto-start whenever the Docker engine starts (e.g. on boot / login),
+    # and restart if it ever crashes. This is what makes it "always running".
+    restart: unless-stopped
+    ports:
+      - "8787:8787"
+    # Optional Jira integration — set these in a local .env file (see .env.example).
+    # Left empty by default; the app runs fine without them.
+    environment:
+      - JIRA_BASE_URL=${JIRA_BASE_URL:-}
+      - JIRA_TOKEN=${JIRA_TOKEN:-}
+    volumes:
+      # Share the host's tracking data with the container:
+      #  - the git hook writes entries.json here (on the host)
+      #  - the backend reads it and stores tracker.db here
+      - ./data:/data
