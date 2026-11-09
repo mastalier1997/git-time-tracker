@@ -17,7 +17,9 @@ RUN apt-get update \
 
 COPY package*.json ./
 RUN npm install --omit=dev
-COPY server.js ./
+COPY server.js bmd-fill.js ./
+# Headless Chromium for the "Book in BMD" button (playwright-core matches its version).
+RUN npx playwright-core install --with-deps chromium
 # Bring in the built frontend from stage 1.
 COPY --from=frontend /app/public ./public
 

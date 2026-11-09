@@ -7,7 +7,8 @@
     "track": "track.js"
   },
   "scripts": {
-    "start": "node track.js"
+    "start": "node track.js",
+    "bmd": "node --env-file=.env web/bmd-fill.js"
   },
   "license": "MIT"
 }

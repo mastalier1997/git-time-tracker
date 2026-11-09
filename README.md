@@ -177,6 +177,30 @@ Without a `.env`, everything works exactly as before — the Jira features simpl
 stay off. The token stays in your `.env` (git-ignored) and is never sent to the
 browser.
 
+## BMD Web booking
+
+**Book in BMD** in the web app (or `web/bmd-fill.js` on the host) books tracked
+time in BMD Web (ZEIT → Bearbeiten). Pick a single day or 1–4 work weeks; the
+default is the current work week. Per day:
+
+- one Normalbuchung from `BMD_DAY_START` (default 08:00) for the day's total;
+- over 6h: work 6h, a 30 min **Pause** booking (Buchungsart 12, not counted), then the rest;
+- holiday / sick / public-holiday entries are skipped (BMD books those itself);
+- days that already have any booking in BMD are skipped, never doubled;
+- every record is read back from BMD after saving, and the run logs out at the end
+  (BMD allows only 5 sessions per user).
+
+Setup: set `BMD_URL`, `BMD_USER`, `BMD_PASSWORD` in `.env` (see `.env.example`)
+and rebuild the container (`docker compose up -d --build`). Host CLI, using your Edge
+(run `npm install` in `web/` once):
+
+```bash
+npm run bmd -- --from 2026-11-02 --to 2026-11-06         # show the plan
+npm run bmd -- --from 2026-11-02 --to 2026-11-06 --save  # book it
+```
+
+On failure a screenshot is saved to `data/bmd-error.png`.
+
 ## Uninstall
 
 ```bash

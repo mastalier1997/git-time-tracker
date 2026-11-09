@@ -33,6 +33,8 @@ export const api = {
   startTimer: (t) => send("POST", "/api/timer/start", t),
   stopTimer: () => send("POST", "/api/timer/stop"),
 
+  bmd: (from, to, save = false) => send("POST", "/api/bmd", { from, to, save }),
+
   logs: (limit = 300) => fetch(`/api/logs?limit=${limit}`).then(json),
   config: () => fetch("/api/config").then(json),
   jira: (key) => {

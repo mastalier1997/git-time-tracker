@@ -459,6 +459,52 @@ app.post("/api/timer/start", (req, res) => {
   res.status(201).json(timer);
 });
 
+// --- BMD Web booking ---------------------------------------------------------
+// POST { from, to, save? }: without save returns the plan; with save books the
+// not-yet-booked days in BMD. Booked days are remembered in kv "bmdBooked".
+
+const bmd = require("./bmd-fill");
+let bmdRunning = false;
+
+app.post("/api/bmd", async (req, res) => {
+  const { from, to, save } = req.body || {};
+  const isDay = (s) => /^\d{4}-\d{2}-\d{2}$/.test(s || "");
+  if (!isDay(from) || !isDay(to) || from > to) return res.status(400).json({ error: "from/to must be YYYY-MM-DD, from <= to" });
+  const booked = kvGet("bmdBooked", {});
+  const view = (rows) => rows.map((r) => ({ ...r, booked: booked[r.day] || null }));
+  let rows;
+  try {
+    // Holiday / sick / public holiday are absences (BMD "Antrag Abwesenheit"), not booked work time.
+    const s = getSettings();
+    const absent = new Set([s.holidayLabel, s.sickLabel, s.publicHolidayLabel]);
+    const { where, params } = entryWhere({ from, to });
+    rows = bmd.plan(db.prepare(`SELECT day, ticket, duration_ms FROM entries ${where}`).all(params).filter((e) => !absent.has(e.ticket)));
+  } catch (e) {
+    return res.status(400).json({ error: e.message });
+  }
+  if (!save) return res.json({ rows: view(rows) });
+
+  if (bmdRunning) return res.status(409).json({ error: "A BMD booking is already running" });
+  bmdRunning = true;
+  try {
+    const result = { booked: [], existing: [] };
+    await bmd.fill(rows.filter((r) => !booked[r.day]), (r, status) => {
+      booked[r.day] = new Date().toISOString();
+      kvSet("bmdBooked", booked);
+      result[status].push(r.day);
+      logLine("bmd", "INFO", status === "existing"
+        ? `skipped ${r.day}: BMD already has bookings`
+        : `booked ${r.day} ${r.blocks.map((b) => `${b.begin}-${b.end}${b.pause ? " Pause" : ""}`).join(", ")}`);
+    });
+    res.json({ rows: view(rows), result });
+  } catch (e) {
+    logLine("bmd", "ERROR", e.message);
+    res.status(502).json({ error: e.message, rows: view(rows) });
+  } finally {
+    bmdRunning = false;
+  }
+});
+
 app.post("/api/timer/stop", (req, res) => {
   const timer = kvGet("timer", null);
   if (!timer) return res.status(404).json({ error: "no timer running" });

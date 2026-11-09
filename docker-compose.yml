@@ -12,6 +12,13 @@ services:
     environment:
       - JIRA_BASE_URL=${JIRA_BASE_URL:-}
       - JIRA_TOKEN=${JIRA_TOKEN:-}
+      # BMD Web booking ("Book in BMD" button). Also read from .env.
+      - BMD_URL=${BMD_URL:-}
+      - BMD_USER=${BMD_USER:-}
+      - BMD_PASSWORD=${BMD_PASSWORD:-}
+      - BMD_DAY_START=${BMD_DAY_START:-08:00}
+      - BMD_BUCHART=${BMD_BUCHART:-1}
+      - BMD_PAUSE_BUCHART=${BMD_PAUSE_BUCHART:-12}
     volumes:
       # Share the host's tracking data with the container:
       #  - the git hook writes entries.json here (on the host)

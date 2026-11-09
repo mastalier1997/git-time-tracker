@@ -4,6 +4,7 @@ import DayChart from "./components/DayChart.jsx";
 import Heatmap from "./components/Heatmap.jsx";
 import SettingsModal from "./components/SettingsModal.jsx";
 import LogsModal from "./components/LogsModal.jsx";
+import BmdModal from "./components/BmdModal.jsx";
 import Timer from "./components/Timer.jsx";
 import EntriesTable from "./components/EntriesTable.jsx";
 import StatsPage from "./components/StatsPage.jsx";
@@ -19,6 +20,7 @@ export default function App() {
   const [settings, setSettings] = useState(null);
   const [showSettings, setShowSettings] = useState(false);
   const [showLogs, setShowLogs] = useState(false);
+  const [showBmd, setShowBmd] = useState(false);
   // Stats is its own page at /stats (the server serves index.html for any path).
   const page = location.pathname.startsWith("/stats") ? "stats" : "tracker";
 
@@ -191,6 +193,7 @@ export default function App() {
           </div>
           <button onClick={() => setShowSettings(true)}>Settings</button>
           {page === "tracker" && <button onClick={exportCsv}>Export CSV</button>}
+          <button className="primary" onClick={() => setShowBmd(true)}>Book in BMD</button>
         </div>
       </header>
 
@@ -276,6 +279,7 @@ export default function App() {
         />
       )}
       {showLogs && <LogsModal onClose={() => setShowLogs(false)} />}
+      {showBmd && <BmdModal onClose={() => setShowBmd(false)} />}
     </div>
   );
 }
